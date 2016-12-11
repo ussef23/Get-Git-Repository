@@ -1,0 +1,54 @@
+
+
+
+<div>
+<div class="sort-bar" ng-show="user.length">
+    
+    <h3>
+    We’ve found {{user.length}} repository results
+</h3>
+
+  </div>
+
+<ul class="repo-list js-repo-list">
+    <li class="col-12 d-block width-full py-4 border-bottom public source" ng-repeat="x in user">
+    	<div class="d-inline-block col-9 mb-1"><h3>
+      		<a href="{{x.html_url}}" target="_blank" class="v-align-middle">{{x.full_name}}</a></h3>
+     	</div> 
+
+
+
+<p class="col-9 text-gray pr-4 py-1 m-0">
+      {{x.description}}
+    </p>
+
+<div class="f6 text-gray mt-2">
+        <span class="repo-language-color ml-0" style="background-color:#f1e05a;"></span>
+      <span class="mr-3">{{x.language}} </span>
+
+<a class="muted-link tooltipped tooltipped-s mr-3" href="/goeuro/Korma/network" aria-label="Forks">
+          <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+          {{x.forks}}
+        </a>
+
+      <a class="muted-link tooltipped tooltipped-s mr-3" href="{{x.html_url}}/stargazers" target="_blank" aria-label="Stargazers">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        {{x.stargazers_count}}
+      </a>
+      Updated <relative-time datetime="" title="">on {{x.updated_at | date : format : timezone}}</relative-time>
+  </div>
+
+    </li>
+</ul>
+</div>
+
+
+<div class="blankslate" ng-show="!user.length && !notfound">
+  <svg aria-hidden="true" class="octicon octicon-search blankslate-icon" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+    <h3>We couldn’t find any repositories matching '{{username}}'</h3> 
+</div> 
+
+<div class="blankslate" ng-show="notfound">
+  <svg aria-hidden="true" class="octicon octicon-search blankslate-icon" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+    <h3>The Github '{{username}}' does not exist</h3> 
+</div> 
